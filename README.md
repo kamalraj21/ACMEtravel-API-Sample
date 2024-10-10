@@ -28,45 +28,9 @@ pip install Flask
 3. The server will start on `http://127.0.0.1:5000/`.
 
 ### Deploying the API
-To deploy the ACME Travels API, you can use a cloud service like **Heroku**, **Render**, or **AWS**. Below are instructions for deploying on **Heroku** as an example.
+To deploy the ACME Travels API, you can use a cloud service like **Render**, **Heroku**, or **AWS**. Below are instructions for deploying on **Render** as an example.
 
-#### Deploying on Heroku
-
-1. **Install Heroku CLI**:
-   - Visit [Heroku CLI installation page](https://devcenter.heroku.com/articles/heroku-cli) and follow the installation instructions.
-
-2. **Prepare the Project for Deployment**:
-   - Create a `requirements.txt` file to specify dependencies:
-     ```sh
-     pip freeze > requirements.txt
-     ```
-   - Create a `Procfile` to define how to run the application:
-     ```
-     web: python app.py
-     ```
-
-3. **Initialize a Git Repository** (if not already done):
-   ```sh
-   git init
-   git add .
-   git commit -m "Initial commit"
-   ```
-
-4. **Create a Heroku App**:
-   ```sh
-   heroku login
-   heroku create acmetravel-api-sample
-   ```
-
-5. **Deploy to Heroku**:
-   ```sh
-   git push heroku main
-   ```
-
-6. **Access the Deployed API**:
-   - Once deployment is complete, you can access the API using the URL provided by Heroku (e.g., `https://acmetravel-api-sample.herokuapp.com/`).
-
-### Deploying on Render
+#### Deploying on Render
 
 1. **Create an Account**:
    - Visit [Render's website](https://render.com) and create an account.
@@ -77,32 +41,16 @@ To deploy the ACME Travels API, you can use a cloud service like **Heroku**, **R
 
 3. **Configure Build and Start Command**:
    - Build command: `pip install -r requirements.txt`
-   - Start command: `python app.py`
+   - Start command: `gunicorn app:app`
 
 4. **Deploy**:
    - Click **Deploy** and wait for Render to build and deploy your service.
 
-### Deploying on AWS (Elastic Beanstalk)
-
-1. **Install AWS Elastic Beanstalk CLI**:
-   - Follow the instructions [here](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) to install the EB CLI.
-
-2. **Initialize Elastic Beanstalk Application**:
-   ```sh
-   eb init -p python-3.7 acmetravel-api-sample
-   eb create acmetravel-env
-   ```
-
-3. **Deploy**:
-   ```sh
-   eb deploy
-   ```
-
-4. **Access the API**:
-   - You can access the API using the environment URL provided by AWS.
+5. **Access the Deployed API**:
+   - Once deployment is complete, you can access the API using the URL provided by Render (e.g., `https://acmetravel-api.onrender.com/`).
 
 ### Testing the API
-You can use **Postman**, **cURL**, or simply your browser to test the endpoints.
+You can use **Postman**, **cURL**, or simply your browser to test the endpoints. Alternatively, use the integrated API testing interface on the webpage.
 
 ## API Endpoints
 
@@ -225,6 +173,10 @@ You can use **Postman**, **cURL**, or simply your browser to test the endpoints.
 ## Notes
 - This API is a development server and should **not** be used in a production environment. For production deployment, use a production WSGI server (e.g., Gunicorn).
 - **Favicon Warning**: A `favicon.ico` route has been added to handle browser requests for a favicon.
+
+## Web Interface for CRUD Operations
+- The deployed API includes a web interface at [https://acmetravel-api.onrender.com/](https://acmetravel-api.onrender.com/), where users can try out CRUD operations directly on the webpage.
+- The web interface provides a simple and elegant design that allows users to interact with the API by creating, reading, updating, and deleting vacation packages.
 
 ## Contributing
 Feel free to submit pull requests or issues for further improvement.
