@@ -1,0 +1,270 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ACME Travels API",
+    "version": "1.0.0",
+    "description": "API documentation for ACME Travels"
+  },
+  "paths": {
+    "/packages": {
+      "get": {
+        "summary": "Retrieve all vacation packages",
+        "responses": {
+          "200": {
+            "description": "A list of vacation packages",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "duration": { "type": "string" },
+                  "price": { "type": "number" },
+                  "description": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new vacation package",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Vacation package details",
+            "schema": {
+              "type": "object",
+              "required": ["name", "duration", "price", "description"],
+              "properties": {
+                "name": { "type": "string" },
+                "duration": { "type": "string" },
+                "price": { "type": "number" },
+                "description": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Package created"
+          }
+        }
+      }
+    },
+    "/packages/{id}": {
+      "get": {
+        "summary": "Retrieve a vacation package by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested vacation package",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" },
+                "duration": { "type": "string" },
+                "price": { "type": "number" },
+                "description": { "type": "string" }
+              }
+            }
+          },
+          "404": {
+            "description": "Package not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a vacation package by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Vacation package details to update",
+            "schema": {
+              "type": "object",
+              "required": ["name", "duration", "price", "description"],
+              "properties": {
+                "name": { "type": "string" },
+                "duration": { "type": "string" },
+                "price": { "type": "number" },
+                "description": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Package updated"
+          },
+          "404": {
+            "description": "Package not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a vacation package by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Package deleted"
+          },
+          "404": {
+            "description": "Package not found"
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "summary": "Retrieve all customers",
+        "responses": {
+          "200": {
+            "description": "A list of customers",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "email": { "type": "string" },
+                  "phone": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new customer",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer details",
+            "schema": {
+              "type": "object",
+              "required": ["name", "email"],
+              "properties": {
+                "name": { "type": "string" },
+                "email": { "type": "string" },
+                "phone": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Customer created"
+          }
+        }
+      }
+    },
+    "/customers/{id}": {
+      "get": {
+        "summary": "Retrieve a customer by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested customer",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" },
+                "email": { "type": "string" },
+                "phone": { "type": "string" }
+              }
+            }
+          },
+          "404": {
+            "description": "Customer not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a customer by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer details to update",
+            "schema": {
+              "type": "object",
+              "required": ["name", "email"],
+              "properties": {
+                "name": { "type": "string" },
+                "email": { "type": "string" },
+                "phone": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer updated"
+          },
+          "404": {
+            "description": "Customer not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a customer by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Customer deleted"
+          },
+          "404": {
+            "description": "Customer not found"
+          }
+        }
+      }
+    }
+  }
+}
